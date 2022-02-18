@@ -2,11 +2,9 @@ import { useState, useEffect } from "react"
 import MenuItem from "./MenuItem"
 
 export default function DropdownMenu(props) {
-    const [items, setItems] = useState(props.items || [])
-    const [inputText, setInputText] = useState("")
-    const [selectedItems, setSelectedItems] = useState([])
+    const [inputText, setInputText] = useState(props.placeHolder || "")
+    const [selectedItems, setSelectedItems] = useState(props.items.map(i => false))
     const [allItemsSelected, setAllItemsSelected] = useState(false)
-
     const [collapsed, setCollapsed] = useState(true)
 
     function collapseHandler() {
@@ -14,10 +12,12 @@ export default function DropdownMenu(props) {
     }
 
     function selectHandler(id) {
+        console.log("happens")
         let updatedSelectedItems = props.multipleSelect ? 
             selectedItems.map((item, i) => i == id ? !item : item) :
             selectedItems.map((item, i) => i == id ? true : false)
 
+        console.log(updatedSelectedItems)
         setSelectedItems(updatedSelectedItems)
     }
 
@@ -31,24 +31,16 @@ export default function DropdownMenu(props) {
         setAllItemsSelected(false)
     }
 
-    useEffect(() => {
-        if (items != [] && items) {
-            var initialSelectedItems = items.map(i => false)
-            setSelectedItems(initialSelectedItems)
-        }
-    }, [])
-
+    // handles selected item events
     useEffect(() => {
         var updatedInputText = "" 
         selectedItems.forEach((selected, i) => {
             if (selected) {
-                updatedInputText += (updatedInputText == "" ? "" : ", ") + items[i]
+                updatedInputText += (updatedInputText == "" ? "" : ", ") + props.items[i]
             }
         })
         setInputText(updatedInputText)
     }, [selectedItems])
-
-    console.log(allItemsSelected)
 
     return(
         <div className="dropdown-menu-container">
@@ -71,9 +63,12 @@ export default function DropdownMenu(props) {
                         />
                     ) 
                 : false}
-                {props.multipleSelect && !allItemsSelected ? 
-                    <button className="select-all-button" onClick={selectAllHandler}>Select All</button> :
-                    <button className="select-all-button" onClick={deselectAllHandler}>Deselect All</button>
+
+                {props.multipleSelect ? 
+                    !allItemsSelected ? 
+                        <button className="select-all-button" onClick={selectAllHandler}>Select All</button> :
+                        <button className="select-all-button" onClick={deselectAllHandler}>Deselect All</button>
+                    : false
                 }
             </div>
         </div>
