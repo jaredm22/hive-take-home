@@ -5,6 +5,7 @@ export default function DropdownMenu(props) {
     const [items, setItems] = useState(props.items || [])
     const [inputText, setInputText] = useState("")
     const [selectedItems, setSelectedItems] = useState([])
+    const [allItemsSelected, setAllItemsSelected] = useState(false)
 
     const [collapsed, setCollapsed] = useState(true)
 
@@ -18,6 +19,16 @@ export default function DropdownMenu(props) {
             selectedItems.map((item, i) => i == id ? true : false)
 
         setSelectedItems(updatedSelectedItems)
+    }
+
+    function selectAllHandler() {
+        setSelectedItems(selectedItems.map(i => true))
+        setAllItemsSelected(true)
+    }
+
+    function deselectAllHandler() {
+        setSelectedItems(selectedItems.map(i => false))
+        setAllItemsSelected(false)
     }
 
     useEffect(() => {
@@ -36,6 +47,8 @@ export default function DropdownMenu(props) {
         })
         setInputText(updatedInputText)
     }, [selectedItems])
+
+    console.log(allItemsSelected)
 
     return(
         <div className="dropdown-menu-container">
@@ -58,6 +71,10 @@ export default function DropdownMenu(props) {
                         />
                     ) 
                 : false}
+                {props.multipleSelect && !allItemsSelected ? 
+                    <button className="select-all-button" onClick={selectAllHandler}>Select All</button> :
+                    <button className="select-all-button" onClick={deselectAllHandler}>Deselect All</button>
+                }
             </div>
         </div>
     )
