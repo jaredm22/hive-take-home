@@ -1,0 +1,30 @@
+$blue: rgb(56, 116, 204);
+$light-blue: rgb(238, 244, 250);
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-menu-container {
+    position: relative;
+    height: 55px;
+    width: 250px;
+    border: 2px solid $blue;
+    border-radius: 5px;
+
+    .dropdown-menu-header {
+        position: relative;
+        z-index: 2;
+        top: -18px;
+        left: 8px;   
+        padding: 0px 5px;
+        font-size: 8pt;
+        font-weight: 500;
+        color: $blue;
+        background: white;
+    }
+}
