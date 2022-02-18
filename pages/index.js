@@ -28,6 +28,7 @@ export default function Home() {
                         multipleSelect={false} 
                         label={"Age"}
                         items={ageData}
+                        width={100}
                     />
                         
                     <h3>Multiple Select</h3>
@@ -35,6 +36,7 @@ export default function Home() {
                         multipleSelect={true} 
                         label={"NBA Teams"} 
                         items={teamsData}
+                        width={400}
                     />
                 </div>     
             </div>

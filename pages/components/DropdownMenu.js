@@ -50,7 +50,7 @@ export default function DropdownMenu(props) {
     }, [props.items])
 
     return(
-        <div className="dropdown-menu-container">
+        <div className="dropdown-menu-container" style={{width: props.width}}>
             <span className="dropdown-menu-header">{props.label}</span>
             <div className="dropdown-menu-input" onClick={collapseHandler}>
                 {inputText}
