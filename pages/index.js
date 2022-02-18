@@ -20,7 +20,6 @@ export default function Home() {
 
     return (
         <div className="container">
-            
             <div className="examples-container">
                 <h1>Dropdown Menu</h1>
                 <div style={{display: "flex", flexDirection:"row",  justifyContent: 'space-evenly', margin: "1rem 0", width: 1024}}>
@@ -37,10 +36,8 @@ export default function Home() {
                         label={"NBA Teams"} 
                         items={teamsData}
                     />
-                </div>
-                    
+                </div>     
             </div>
-            
         </div>
     )
 }

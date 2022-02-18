@@ -3,7 +3,7 @@ import MenuItem from "./MenuItem"
 
 export default function DropdownMenu(props) {
     const [inputText, setInputText] = useState(props.placeHolder || "")
-    const [selectedItems, setSelectedItems] = useState(props.items.map(i => false) || [])
+    const [selectedItems, setSelectedItems] = useState(props.items ? props.items.map(i => false) : [])
     const [allItemsSelected, setAllItemsSelected] = useState(false)
     const [collapsed, setCollapsed] = useState(true)
 
@@ -12,12 +12,9 @@ export default function DropdownMenu(props) {
     }
 
     function selectHandler(id) {
-        console.log("happens")
         let updatedSelectedItems = props.multipleSelect ? 
             selectedItems.map((item, i) => i == id ? !item : item) :
             selectedItems.map((item, i) => i == id ? true : false)
-
-        console.log(updatedSelectedItems)
         setSelectedItems(updatedSelectedItems)
     }
 
