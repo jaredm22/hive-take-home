@@ -3,7 +3,7 @@ import MenuItem from "./MenuItem"
 
 export default function DropdownMenu(props) {
     const [inputText, setInputText] = useState(props.placeHolder || "")
-    const [selectedItems, setSelectedItems] = useState(props.items.map(i => false))
+    const [selectedItems, setSelectedItems] = useState(props.items.map(i => false) || [])
     const [allItemsSelected, setAllItemsSelected] = useState(false)
     const [collapsed, setCollapsed] = useState(true)
 
