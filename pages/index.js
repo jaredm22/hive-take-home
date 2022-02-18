@@ -22,6 +22,7 @@ export default function Home() {
         <div className="container">
             <div className="examples-container">
                 <h1>Dropdown Menu</h1>
+
                 <div style={{display: "flex", flexDirection:"row",  justifyContent: 'space-evenly', margin: "1rem 0", width: 1024}}>
                     <h3>Single Select</h3>
                     <DropdownMenu 
