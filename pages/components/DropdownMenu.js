@@ -45,9 +45,9 @@ export default function DropdownMenu(props) {
                 className="menu-content" 
                 style={{display: collapsed ? "none" : "flex"}}
             >
-                {props.items.map((item, i) => 
+                {props.items ? props.items.map((item, i) => 
                     <MenuItem key={`menu-item-${i}`} item={item} id={i} selectHandler={selectHandler} selected={selectedItems[i]}/>
-                )}
+                ) : false}
             </div>
         </div>
     )
