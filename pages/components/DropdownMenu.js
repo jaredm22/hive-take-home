@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import MenuItem from "./MenuItem"
 
 export default function DropdownMenu(props) {
-
     const [items, setItems] = useState(props.items || [])
     const [inputText, setInputText] = useState("")
     const [selectedItems, setSelectedItems] = useState([])
@@ -14,14 +13,11 @@ export default function DropdownMenu(props) {
     }
 
     function selectHandler(id) {
-        if (props.multipleSelect) {
-            let updatedSelectedItems = [...selectedItems]
-            updatedSelectedItems[id] = !selectedItems[id]
-            setSelectedItems(updatedSelectedItems)
-        } else {
-            let updatedSelectedItems = selectedItems.map((item, i) => i == id ? true : false)
-            setSelectedItems(updatedSelectedItems)
-        }
+        let updatedSelectedItems = props.multipleSelect ? 
+            selectedItems.map((item, i) => i == id ? !item : item) :
+            selectedItems.map((item, i) => i == id ? true : false)
+
+        setSelectedItems(updatedSelectedItems)
     }
 
     useEffect(() => {
@@ -43,7 +39,7 @@ export default function DropdownMenu(props) {
 
     return(
         <div className="dropdown-menu-container">
-            <span className="dropdown-menu-header">Tag</span>
+            <span className="dropdown-menu-header">{props.label}</span>
             <button className="dropdown-menu-input" onClick={collapseHandler}>{inputText}</button>
 
             <div 

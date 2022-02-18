@@ -9,6 +9,15 @@ $light-blue: rgb(238, 244, 250);
     align-items: center;
 }
 
+.examples-container {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .dropdown-menu-container {
     position: relative;
     height: 55px;
@@ -38,8 +47,9 @@ $light-blue: rgb(238, 244, 250);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-weight: 400;
+        font-weight: 450;
         font-size: 13pt;
+        text-align: left;
     }
 
     .menu-content {
