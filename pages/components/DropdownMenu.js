@@ -14,9 +14,14 @@ export default function DropdownMenu(props) {
     }
 
     function selectHandler(id) {
-        let updatedSelectedItems = [...selectedItems]
-        updatedSelectedItems[id] = !selectedItems[id]
-        setSelectedItems(updatedSelectedItems)
+        if (props.multipleSelect) {
+            let updatedSelectedItems = [...selectedItems]
+            updatedSelectedItems[id] = !selectedItems[id]
+            setSelectedItems(updatedSelectedItems)
+        } else {
+            let updatedSelectedItems = selectedItems.map((item, i) => i == id ? true : false)
+            setSelectedItems(updatedSelectedItems)
+        }
     }
 
     useEffect(() => {
@@ -45,9 +50,18 @@ export default function DropdownMenu(props) {
                 className="menu-content" 
                 style={{display: collapsed ? "none" : "flex"}}
             >
-                {props.items ? props.items.map((item, i) => 
-                    <MenuItem key={`menu-item-${i}`} item={item} id={i} selectHandler={selectHandler} selected={selectedItems[i]}/>
-                ) : false}
+                {props.items ? 
+                    props.items.map((item, i) => 
+                        <MenuItem 
+                            key={`menu-item-${i}`} 
+                            item={item} 
+                            id={i} 
+                            selectHandler={selectHandler} 
+                            selected={selectedItems[i]}
+                            multipleSelect={props.multipleSelect}
+                        />
+                    ) 
+                : false}
             </div>
         </div>
     )

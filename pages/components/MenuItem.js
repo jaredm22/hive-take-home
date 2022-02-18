@@ -9,13 +9,15 @@ export default function MenuItem(props) {
             className={`menu-item-container ${props.selected ? "selected" : ""}`}
             onClick={selectHandlerWrapper}
         >
-            <input 
-                type="checkbox" 
-                name={`menu-item-${props.id}`} 
-                value={props.id || ""}
-                checked={props.selected || false} 
-                readOnly
-            />
+            {props.multipleSelect ? 
+                <input 
+                    type="checkbox" 
+                    name={`menu-item-${props.id}`} 
+                    value={props.id || ""}
+                    checked={props.selected || false} 
+                    readOnly
+                /> : false}
+            
             <label className="menu-item-label">{props.item}</label>
         </div>
     )
