@@ -11,12 +11,11 @@ $light-blue: rgb(238, 244, 250);
 
 .examples-container {
     height: 100%;
-    width: 100%;
+    width: 1024px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
-    padding: 200px 300px;
 }
 
 .dropdown-menu-container {
