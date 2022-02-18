@@ -5,7 +5,7 @@ This dropdown menu React component can be resued in any application with any lis
 
 It has the following props: 
 - **multipleSelect** - boolean
-  - Indicated if list allows for multiple selections
+  - Indicates if list allows for multiple selections
 - **label** - string
   - Dropdown menu label
 - **items** - [string]
