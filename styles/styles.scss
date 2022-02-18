@@ -13,18 +13,41 @@ $light-blue: rgb(238, 244, 250);
     position: relative;
     height: 55px;
     width: 250px;
-    border: 2px solid $blue;
+    border: 3px solid $blue;
     border-radius: 5px;
 
     .dropdown-menu-header {
-        position: relative;
+        position: absolute;
         z-index: 2;
-        top: -18px;
+        top: -12px;
         left: 8px;   
         padding: 0px 5px;
-        font-size: 8pt;
+        font-size: 10pt;
         font-weight: 500;
         color: $blue;
         background: white;
+    }
+
+    .dropdown-menu-input {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        background: none;
+        border: none;
+    }
+
+    .menu-content {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3px;
+
+        .menu-item-container {
+            display: flex;
+            height: 55px;
+            width: 100%;
+            background: pink;
+            border: 1px solid black;
+            align-items: center;
+        }
     }
 }
