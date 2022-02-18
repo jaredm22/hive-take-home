@@ -64,5 +64,9 @@ $light-blue: rgb(238, 244, 250);
                 margin: 0px 10px;
             }
         }
+
+        .selected {
+            background: $light-blue;
+        }
     }
 }

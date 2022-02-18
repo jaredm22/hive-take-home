@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import MenuItem from "./MenuItem"
 
 export default function DropdownMenu(props) {
 
-    const [buttonText, setButtonText] = useState("")
+    const [items, setItems] = useState(props.items || [])
+    const [inputText, setInputText] = useState("")
     const [selectedItems, setSelectedItems] = useState([])
 
     const [collapsed, setCollapsed] = useState(true)
@@ -11,23 +13,36 @@ export default function DropdownMenu(props) {
         setCollapsed(!collapsed)
     }
 
-    
+    function selectHandler(id) {
+        let updatedSelectedItems = [...selectedItems]
+        updatedSelectedItems[id] = !selectedItems[id]
+        setSelectedItems(updatedSelectedItems)
+    }
 
+    useEffect(() => {
+        var initialSelectedItems = []
+        if (items != []) {
+            initialSelectedItems = items.map(i => false)
+        }
+        setSelectedItems(initialSelectedItems)
+    }, [])
+
+    // useEffect(() => {
+    //     var updatedInputText = 
+    //     setSelectedItems(initialSelectedItems)
+    // }, [])
+    
     return(
         <div className="dropdown-menu-container">
             <span className="dropdown-menu-header">Tag</span>
-            <button className="dropdown-menu-input" onClick={collapseHandler}></button>
-            <div class="menu-content" style={{display: collapsed ? "none" : "flex"}}>
+            <button className="dropdown-menu-input" onClick={collapseHandler}>{inputText}</button>
+
+            <div 
+                className="menu-content" 
+                style={{display: collapsed ? "none" : "flex"}}
+            >
                 {props.items.map((item, i) => 
-                    <div className="menu-item-container">
-                        <input 
-                            className="checkbox-input"
-                            type="checkbox" 
-                            name={`menu-item-${i}`} 
-                            value={item}
-                        />
-                        <label className="menu-item-label" for={`menu-item-${i}`}>{item}</label>
-                    </div>
+                    <MenuItem key={`menu-item-${i}`} item={item} id={i} selectHandler={selectHandler} selected={selectedItems[i]}/>
                 )}
             </div>
         </div>
