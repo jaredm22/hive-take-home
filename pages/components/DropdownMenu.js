@@ -20,18 +20,22 @@ export default function DropdownMenu(props) {
     }
 
     useEffect(() => {
-        var initialSelectedItems = []
-        if (items != []) {
-            initialSelectedItems = items.map(i => false)
+        if (items != [] && items) {
+            var initialSelectedItems = items.map(i => false)
+            setSelectedItems(initialSelectedItems)
         }
-        setSelectedItems(initialSelectedItems)
     }, [])
 
-    // useEffect(() => {
-    //     var updatedInputText = 
-    //     setSelectedItems(initialSelectedItems)
-    // }, [])
-    
+    useEffect(() => {
+        var updatedInputText = "" 
+        selectedItems.forEach((selected, i) => {
+            if (selected) {
+                updatedInputText += (i == 0 ? "" : ", ") + items[i]
+            }
+        })
+        setInputText(updatedInputText)
+    }, [selectedItems])
+
     return(
         <div className="dropdown-menu-container">
             <span className="dropdown-menu-header">Tag</span>
