@@ -11,14 +11,22 @@ export default function DropdownMenu(props) {
         setCollapsed(!collapsed)
     }
 
+    
+
     return(
         <div className="dropdown-menu-container">
             <span className="dropdown-menu-header">Tag</span>
             <button className="dropdown-menu-input" onClick={collapseHandler}></button>
             <div class="menu-content" style={{display: collapsed ? "none" : "flex"}}>
-                {props.items.map(item => 
+                {props.items.map((item, i) => 
                     <div className="menu-item-container">
-                        <a className="menu-item" href="#/">{item}</a>
+                        <input 
+                            className="checkbox-input"
+                            type="checkbox" 
+                            name={`menu-item-${i}`} 
+                            value={item}
+                        />
+                        <label className="menu-item-label" for={`menu-item-${i}`}>{item}</label>
                     </div>
                 )}
             </div>
