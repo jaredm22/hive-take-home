@@ -30,7 +30,7 @@ export default function DropdownMenu(props) {
         var updatedInputText = "" 
         selectedItems.forEach((selected, i) => {
             if (selected) {
-                updatedInputText += (i == 0 ? "" : ", ") + items[i]
+                updatedInputText += (updatedInputText == "" ? "" : ", ") + items[i]
             }
         })
         setInputText(updatedInputText)
