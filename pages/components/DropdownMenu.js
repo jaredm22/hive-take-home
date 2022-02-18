@@ -17,6 +17,9 @@ export default function DropdownMenu(props) {
         let updatedSelectedItems = props.multipleSelect ? 
             selectedItems.map((item, i) => i == id ? !item : item) :
             selectedItems.map((item, i) => i == id ? true : false)
+        if (allItemsSelected) {
+            setAllItemsSelected(false)
+        }
         setSelectedItems(updatedSelectedItems)
     }
 
