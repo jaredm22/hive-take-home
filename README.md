@@ -1,7 +1,7 @@
 # Hive Take-home Exercise
 
 ### Dropdown Menu Component
-This dropdown menu React component can be resued in any application with any list of strings. 
+This dropdown menu React component can be resued in any application with any list of strings.
 
 It has the following props: 
 - **multipleSelect** - boolean

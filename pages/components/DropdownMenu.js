@@ -20,6 +20,9 @@ export default function DropdownMenu(props) {
         if (allItemsSelected) {
             setAllItemsSelected(false)
         }
+        if (!props.multipleSelect) {
+            setCollapsed(true)
+        }
         setSelectedItems(updatedSelectedItems)
     }
 
