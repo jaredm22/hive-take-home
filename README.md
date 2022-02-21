@@ -13,4 +13,10 @@ It has the following props:
 - **width** - int
   - Desired width of dropdown menu (minimum: 100)
 
+#### Running the project
+
+1. Clone this repository
+2. Run the command `npm run dev`
+3. View the [application](http://localhost:3000)
+
 A live version of this project with examples can be found at https://hive-take-home.vercel.app/. 
